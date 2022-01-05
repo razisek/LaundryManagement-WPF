@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="LaundryManagement.View.AddPaketView"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LaundryManagement.View"
+             mc:Ignorable="d"
+             d:DesignHeight="520"
+             d:DesignWidth="650">
+
+    <UserControl.Style>
+        <Style>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="UserControl.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0.0"
+                                             To="1.0"
+                                             Duration="0:0:0.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+
+    <Grid Background="#1E1F22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <RadioButton Height="40"
+                     Width="40"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Tag="Assets/back.png"
+                     Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.BackPagePaket}"
+                     Style="{StaticResource HomeButtonStyle}"
+                     Margin="10" />
+
+            <TextBlock Text="Tambah Paket"
+                   FontSize="24"
+                   FontFamily="/Fonts/OpenSans-Regular.ttf #Open Sans Regular"
+                   Foreground="#DDDDDD"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="50,12,10,0" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock 
+                Text="Nama Paket :"
+                Foreground="#DDDDDD"
+                FontFamily="Fonts/Roboto-Regular.ttf #Roboto Regular"
+                FontSize="18"
+                Margin="10"/>
+            <TextBox 
+                x:Name="namaPaket"
+                Text="{Binding PaketName, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource SearchBoxStyle}"
+                HorizontalAlignment="Left"
+                Margin="10,0"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <TextBlock 
+                Text="Satuan Paket :"
+                Foreground="#DDDDDD"
+                FontFamily="Fonts/Roboto-Regular.ttf #Roboto Regular"
+                FontSize="18"
+                Margin="10"/>
+            <TextBox 
+                x:Name="satuanPaket"
+                Text="{Binding SatuanPaket, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource SearchBoxStyle}"
+                HorizontalAlignment="Left"
+                Margin="10,0"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <TextBlock 
+                Text="Harga Paket :"
+                Foreground="#DDDDDD"
+                FontFamily="Fonts/Roboto-Regular.ttf #Roboto Regular"
+                FontSize="18"
+                Margin="10"/>
+            <TextBox 
+                x:Name="hargaPaket"
+                PreviewTextInput="NumberValidationTextBox"
+                Text="{Binding HargaPaket, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource SearchBoxStyle}"
+                HorizontalAlignment="Left"
+                Margin="10,0"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Button 
+                    Content="Tambah Paket" 
+                    Height="40" 
+                    Width="120" 
+                    Style="{StaticResource btnBlue}"
+                    Command="{Binding ButtonAddPaketCommand}"
+                HorizontalAlignment="Left"
+                Margin="30,0"/>
+        </Grid>
+    </Grid>
+
+</UserControl>
